@@ -38,7 +38,9 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Mallanna-Regular.ttf"]
+          "fonts": [
+            "./assets/fonts/Mallanna-Regular.ttf"
+          ]
         }
       ],
       [
@@ -49,7 +51,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#FFFFFF"
         }
-      ]
+      ],
+      "@react-native-google-signin/google-signin"
     ],
     "experiments": {
       "typedRoutes": true,

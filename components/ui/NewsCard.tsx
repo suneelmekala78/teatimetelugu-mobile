@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
-import { Brand, Colors, FontSize, Radius, Shadow, Spacing } from "@/constants/theme";
+import { Brand, Colors, FontSize, Radius, Shadow, Spacing, TeluguFont } from "@/constants/theme";
 import { getCategoryLabel } from "@/constants/categories";
 import { timeAgo, formatCount } from "@/lib/utils";
 import type { News, Language } from "@/types";
@@ -172,12 +172,14 @@ const styles = StyleSheet.create({
   categoryBadgeText: {
     fontSize: FontSize.xs,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: "#fff",
     textTransform: "uppercase",
   },
   featuredTitle: {
     fontSize: FontSize.lg,
     fontWeight: "800",
+    fontFamily: TeluguFont,
     color: "#fff",
     lineHeight: 24,
     marginBottom: Spacing.xs,
@@ -213,6 +215,7 @@ const styles = StyleSheet.create({
   horizontalTitle: {
     fontSize: FontSize.md,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
     lineHeight: 20,
     flex: 1,
@@ -232,6 +235,7 @@ const styles = StyleSheet.create({
   compactTitle: {
     fontSize: FontSize.sm,
     fontWeight: "600",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
     lineHeight: 18,
     marginBottom: Spacing.xs,
@@ -266,6 +270,7 @@ const styles = StyleSheet.create({
   standardTitle: {
     fontSize: FontSize.lg,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
     lineHeight: 23,
     marginBottom: Spacing.sm,
@@ -275,6 +280,7 @@ const styles = StyleSheet.create({
   smallCategoryText: {
     fontSize: FontSize.xs,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Brand.primary,
     textTransform: "uppercase",
   },

@@ -14,16 +14,20 @@ import {
 import { Image } from "expo-image";
 import { useRouter, Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import * as WebBrowser from "expo-web-browser";
-import * as Google from "expo-auth-session/providers/google";
-import { makeRedirectUri } from "expo-auth-session";
+import {
+  GoogleSignin,
+  statusCodes,
+} from "@react-native-google-signin/google-signin";
 
 import { useUserStore } from "@/store/useUserStore";
 import { useAppStore } from "@/store/useAppStore";
 import { registerUser, googleAuth } from "@/lib/requests";
 import { Brand, Colors, FontSize, Radius, Spacing } from "@/constants/theme";
 
-WebBrowser.maybeCompleteAuthSession();
+GoogleSignin.configure({
+  webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID!,
+  offlineAccess: false,
+});
 
 export default function RegisterScreen() {
   const router = useRouter();
@@ -37,36 +41,28 @@ export default function RegisterScreen() {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
-  const redirectUri = makeRedirectUri({
-    scheme: "teatimetelugu",
-    path: "auth",
-  });
-
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    clientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
-    webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
-    androidClientId: process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID,
-    iosClientId: process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID,
-    redirectUri,
-  });
-
-  useEffect(() => {
-    if (response?.type === "success") {
-      const idToken = response.authentication?.idToken;
-      if (idToken) {
-        handleGoogleSignUp(idToken);
-      }
-    }
-  }, [response]);
-
-  const handleGoogleSignUp = async (idToken: string) => {
+  const handleGoogleSignUp = async () => {
     setGoogleLoading(true);
     try {
+      await GoogleSignin.hasPlayServices();
+      const response = await GoogleSignin.signIn();
+      const idToken = response.data?.idToken;
+
+      if (!idToken) {
+        throw new Error("No ID token returned");
+      }
+
       const res = await googleAuth({ idToken });
       const { accessToken, user, refreshToken } = res.data;
       await login(user, accessToken, refreshToken);
       router.back();
     } catch (err: any) {
+      if (err.code === statusCodes.SIGN_IN_CANCELLED) {
+        return;
+      }
+      if (err.code === statusCodes.IN_PROGRESS) {
+        return;
+      }
       const message =
         err?.response?.data?.message ||
         (lang === "te"
@@ -151,8 +147,8 @@ export default function RegisterScreen() {
         {/* Google Sign Up */}
         <TouchableOpacity
           style={[styles.googleBtn, googleLoading && styles.googleBtnDisabled]}
-          onPress={() => promptAsync()}
-          disabled={!request || googleLoading}
+          onPress={handleGoogleSignUp}
+          disabled={googleLoading}
           activeOpacity={0.8}
         >
           {googleLoading ? (

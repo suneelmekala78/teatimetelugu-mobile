@@ -24,7 +24,7 @@ import {
   CATEGORIES,
   type CategoryKey,
 } from "@/constants/categories";
-import { Brand, Colors, FontSize, Radius, Spacing } from "@/constants/theme";
+import { Brand, Colors, FontSize, Radius, Spacing, TeluguFont } from "@/constants/theme";
 import type { News } from "@/types";
 
 export default function CategoryScreen() {
@@ -241,6 +241,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: FontSize.xl,
     fontWeight: "800",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
     textAlign: "center",
   },
@@ -277,6 +278,7 @@ const styles = StyleSheet.create({
   chipText: {
     fontSize: FontSize.sm,
     fontWeight: "600",
+    fontFamily: TeluguFont,
     color: Colors.light.textSecondary,
   },
   chipTextActive: {

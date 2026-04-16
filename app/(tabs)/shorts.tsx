@@ -22,13 +22,11 @@ import { useAppStore } from "@/store/useAppStore";
 import { useUserStore } from "@/store/useUserStore";
 import { getCategoryLabel } from "@/constants/categories";
 import { timeAgo, formatCount } from "@/lib/utils";
-import { Brand, Colors, FontSize, Radius, Spacing } from "@/constants/theme";
+import { Brand, Colors, FontSize, Radius, Spacing, TeluguFont } from "@/constants/theme";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { ErrorView } from "@/components/ui/ErrorView";
 import { CommentsBottomSheet } from "@/components/ui/CommentsBottomSheet";
 import type { News } from "@/types";
-
-const TELUGU_FONT = "Mallanna";
 
 const REACTION_EMOJIS = [
   { type: "happy", emoji: "😊" },
@@ -251,13 +249,13 @@ export default function ShortsScreen() {
           nestedScrollEnabled
         >
           {/* Headline */}
-          <Text style={[styles.headline, lang === "te" && { fontFamily: TELUGU_FONT }]} numberOfLines={2}>
+          <Text style={styles.headline} numberOfLines={2}>
             {title}
           </Text>
 
           {/* Summary text (short news or truncated description) */}
           {summaryText !== "" && (
-            <Text style={[styles.shortNewsText, lang === "te" && { fontFamily: TELUGU_FONT }]}>
+            <Text style={styles.shortNewsText}>
               {summaryText}
               {isTruncated && (
                 <Text
@@ -432,6 +430,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: FontSize.lg,
     fontWeight: "800",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
   },
 
@@ -460,6 +459,7 @@ const styles = StyleSheet.create({
   imageBadgeText: {
     fontSize: FontSize.xs,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: "#fff",
     textTransform: "uppercase",
   },
@@ -475,12 +475,14 @@ const styles = StyleSheet.create({
   headline: {
     fontSize: FontSize.lg,
     fontWeight: "800",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
     lineHeight: 24,
     marginBottom: Spacing.sm,
   },
   shortNewsText: {
     fontSize: FontSize.md,
+    fontFamily: TeluguFont,
     color: Colors.light.textSecondary,
     lineHeight: 22,
     marginBottom: Spacing.md,
@@ -488,6 +490,7 @@ const styles = StyleSheet.create({
   readMoreInline: {
     fontSize: FontSize.md,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Brand.primary,
   },
   metaRow: {
@@ -515,6 +518,7 @@ const styles = StyleSheet.create({
   readMoreText: {
     fontSize: FontSize.sm,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Brand.primary,
   },
 

@@ -7,7 +7,7 @@ import {
   type ViewStyle,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Brand, Colors, FontSize, Spacing } from "@/constants/theme";
+import { Brand, Colors, FontSize, Spacing, TeluguFont } from "@/constants/theme";
 
 interface Props {
   title: string;
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: FontSize.lg,
     fontWeight: "900",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
   },
   seeAllBtn: {
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
   seeAllText: {
     fontSize: FontSize.sm,
     fontWeight: "600",
+    fontFamily: TeluguFont,
     color: Brand.primary,
   },
 });

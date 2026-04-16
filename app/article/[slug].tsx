@@ -26,7 +26,7 @@ import { getNewsBySlug, getRelatedNews } from "@/lib/requests";
 import { useAppStore } from "@/store/useAppStore";
 import { getCategoryLabel, getSubCategoryLabel } from "@/constants/categories";
 import { formatDate, timeAgo, formatCount } from "@/lib/utils";
-import { Brand, Colors, FontSize, Radius, Spacing, Shadow } from "@/constants/theme";
+import { Brand, Colors, FontSize, Radius, Spacing, Shadow, TeluguFont } from "@/constants/theme";
 import type { News } from "@/types";
 
 export default function ArticleScreen() {
@@ -195,6 +195,7 @@ export default function ArticleScreen() {
                   color: Colors.light.text,
                   fontSize: 16,
                   lineHeight: 28,
+                  fontFamily: TeluguFont,
                 },
                 p: {
                   marginTop: 0,
@@ -207,9 +208,9 @@ export default function ArticleScreen() {
                   color: Brand.primary,
                   textDecorationLine: "none",
                 },
-                h1: { fontSize: 24, fontWeight: "700", marginBottom: 8 },
-                h2: { fontSize: 20, fontWeight: "700", marginBottom: 8 },
-                h3: { fontSize: 18, fontWeight: "700", marginBottom: 8 },
+                h1: { fontSize: 24, fontWeight: "700", fontFamily: TeluguFont, marginBottom: 8 },
+                h2: { fontSize: 20, fontWeight: "700", fontFamily: TeluguFont, marginBottom: 8 },
+                h3: { fontSize: 18, fontWeight: "700", fontFamily: TeluguFont, marginBottom: 8 },
                 blockquote: {
                   borderLeftWidth: 3,
                   borderLeftColor: Brand.primary,
@@ -338,6 +339,7 @@ const styles = StyleSheet.create({
   categoryBadgeText: {
     fontSize: FontSize.xs,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: "#fff",
     textTransform: "uppercase",
   },
@@ -356,6 +358,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: FontSize.xxl,
     fontWeight: "800",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
     lineHeight: 32,
     marginBottom: Spacing.lg,
@@ -381,6 +384,7 @@ const styles = StyleSheet.create({
   authorName: {
     fontSize: FontSize.sm,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
   },
   publishedInfo: {
@@ -412,6 +416,7 @@ const styles = StyleSheet.create({
   plainText: {
     fontSize: 16,
     lineHeight: 28,
+    fontFamily: TeluguFont,
     color: Colors.light.text,
   },
 

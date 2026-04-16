@@ -40,7 +40,7 @@ import {
 import { timeAgo } from "@/lib/utils";
 import { useAppStore } from "@/store/useAppStore";
 import { getCategoryLabel, getSubCategoryLabel, NAV_CATEGORIES, getCategoryIcon } from "@/constants/categories";
-import { Brand, Colors, FontSize, Radius, Spacing, Shadow } from "@/constants/theme";
+import { Brand, Colors, FontSize, Radius, Spacing, Shadow, TeluguFont } from "@/constants/theme";
 import type { News, Video, Gallery, HomeConfig, MovieEntry, CollectionEntry, SearchHit, SearchResult } from "@/types";
 
 /* ─── Movie Table sub-component ─── */
@@ -356,35 +356,6 @@ export default function HomeScreen() {
           />
         }
       >
-        {/* Category Quick Links */}
-        <View style={styles.section}>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.categoryScrollContent}
-          >
-            {NAV_CATEGORIES.map((key) => (
-              <TouchableOpacity
-                key={key}
-                style={styles.categoryPill}
-                activeOpacity={0.7}
-                onPress={() => router.push(`/category/${key}` as any)}
-              >
-                <View style={styles.categoryIconWrap}>
-                  <Ionicons
-                    name={getCategoryIcon(key) as any}
-                    size={20}
-                    color={Brand.primary}
-                  />
-                </View>
-                <Text style={styles.categoryPillText}>
-                  {getCategoryLabel(key, lang)}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </View>
-
         {/* Breaking News Banner */}
         {breakingNews.length > 0 && (
           <View style={styles.section}>
@@ -1037,6 +1008,7 @@ const styles = StyleSheet.create({
   breakingBadgeText: {
     fontSize: FontSize.xs,
     fontWeight: "800",
+    fontFamily: TeluguFont,
     color: "#fff",
     letterSpacing: 1,
   },
@@ -1062,33 +1034,9 @@ const styles = StyleSheet.create({
   breakingTitle: {
     fontSize: FontSize.md,
     fontWeight: "800",
+    fontFamily: TeluguFont,
     color: "#fff",
     lineHeight: 20,
-  },
-
-  // Category Quick Links
-  categoryScrollContent: {
-    paddingHorizontal: Spacing.lg,
-    gap: Spacing.md,
-  },
-  categoryPill: {
-    alignItems: "center",
-    gap: Spacing.sm,
-    width: 72,
-  },
-  categoryIconWrap: {
-    width: 52,
-    height: 52,
-    borderRadius: 26,
-    backgroundColor: Brand.primary + "12",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  categoryPillText: {
-    fontSize: FontSize.xs,
-    fontWeight: "600",
-    color: Colors.light.text,
-    textAlign: "center",
   },
 
   // Trending
@@ -1105,6 +1053,7 @@ const styles = StyleSheet.create({
   trendingTitle: {
     fontSize: FontSize.sm,
     fontWeight: "600",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
     lineHeight: 18,
   },
@@ -1132,6 +1081,7 @@ const styles = StyleSheet.create({
   hotTopicTitle: {
     fontSize: FontSize.md,
     fontWeight: "800",
+    fontFamily: TeluguFont,
     color: "#fff",
     lineHeight: 22,
   },
@@ -1166,6 +1116,7 @@ const styles = StyleSheet.create({
   reviewTitle: {
     fontSize: FontSize.sm,
     fontWeight: "600",
+    fontFamily: TeluguFont,
     color: "#fff",
     lineHeight: 18,
   },
@@ -1184,6 +1135,7 @@ const styles = StyleSheet.create({
   catNewsLabel: {
     fontSize: FontSize.md,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Brand.primary,
   },
   catNewsCard: {
@@ -1207,6 +1159,7 @@ const styles = StyleSheet.create({
   catNewsSub: {
     fontSize: FontSize.xs,
     fontWeight: "600",
+    fontFamily: TeluguFont,
     color: Colors.light.textMuted,
     textTransform: "capitalize",
     marginBottom: 2,
@@ -1214,6 +1167,7 @@ const styles = StyleSheet.create({
   catNewsTitle: {
     fontSize: FontSize.sm,
     fontWeight: "600",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
     lineHeight: 18,
   },
@@ -1230,6 +1184,7 @@ const styles = StyleSheet.create({
   movieTableTitle: {
     fontSize: FontSize.lg,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
     marginBottom: Spacing.md,
   },
@@ -1249,6 +1204,7 @@ const styles = StyleSheet.create({
   movieTabText: {
     fontSize: FontSize.sm,
     fontWeight: "600",
+    fontFamily: TeluguFont,
     color: Colors.light.textSecondary,
   },
   movieTabTextActive: {
@@ -1265,6 +1221,7 @@ const styles = StyleSheet.create({
   movieTableHeaderText: {
     fontSize: FontSize.sm,
     fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Colors.light.textSecondary,
     textTransform: "uppercase",
   },
@@ -1282,6 +1239,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: FontSize.sm,
     fontWeight: "600",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
   },
   movieTableCellValue: {
@@ -1408,7 +1366,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.4)",
   },
   sidebar: {
-    width: 280,
+    width: 220,
     backgroundColor: "#fff",
     paddingHorizontal: Spacing.lg,
     paddingBottom: Spacing.xl,
@@ -1422,6 +1380,7 @@ const styles = StyleSheet.create({
   sidebarTitle: {
     fontSize: FontSize.xl,
     fontWeight: "800",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
   },
   sidebarItem: {
@@ -1443,7 +1402,8 @@ const styles = StyleSheet.create({
   sidebarItemText: {
     flex: 1,
     fontSize: FontSize.md,
-    fontWeight: "500",
+    fontWeight: "700",
+    fontFamily: TeluguFont,
     color: Colors.light.text,
   },
   sidebarLangSwitch: {
